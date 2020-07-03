@@ -1,0 +1,455 @@
+    1  useradd user1
+    2  passwd user1
+    3  clear
+    4  cd /etc
+    5  cd sshd
+    6  cd ssh
+    7  clear
+    8  ls
+    9  vi sshd_config 
+   10  service sshd restart
+   11  service sshd status
+   12  clear
+   13  sudo yum install -y epel-release
+   14  yum install -y xrdp
+   15  sudo systemctl enable xrdp
+   16  systemctl start xrdp
+   17  clear
+   18  whoami
+   19  clea
+   20  clear
+   21  sudo firewall-cmd --add-port=3389/tcp --permanent
+   22  sudo yum -y update
+   23  clear
+   24  help firewall-cmd
+   25  sudo systemctl start xrdp
+   26  firewall-cmd --add-port=3389/tcp --permanent
+   27  systemctl status firewalld
+   28  yum install firewalld
+   29  clear
+   30  systemctl status firewalld
+   31  systemctl start firewalld
+   32  firewall-cmd --add-port=3389/tcp --permanent
+   33  sudo firewall-cmd --reload
+   34  netstat -na | grep 3389
+   35  clear
+   36  sudo yum groupinstall "GNOME DESKTOP" -y
+   37  clear
+   38  systemctl set-default graphical.target
+   39  exit
+   40  visudo
+   41  usermod -aG wheel user1
+   42  exit
+   43  whoami
+   44  yum update -y
+   45  clear
+   46  cd /
+   47  clear
+   48  whoami
+   49  clear
+   50  reboot
+   51  cd /
+   52  clear
+   53  whoami
+   54  clear
+   55  rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
+   56  yum-config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+   57  yum install sublime-text
+   58  clear
+   59  subl 
+   60  cd /home/user1/Downloads/
+   61  ls
+   62  clear
+   63  ls
+   64  whoami
+   65  yum install docker-ce-18.03.1.ce-1.el7.centos.x86_64.rpm
+   66  clear
+   67  systemctl start docker
+   68  systemctl enable docker
+   69  cd /
+   70  clear
+   71  docker info
+   72  clear
+   73  docker images
+   74  docker images
+   75  clear
+   76  clear
+   77  ls
+   78  mkdir kubews
+   79  cd kubews/
+   80  clear
+   81  ls
+   82  pwd
+   83  mkdir javahw
+   84  cd javahw/
+   85  clear
+   86  ls
+   87  pwd
+   88  subl Dockerfile
+   89  subl sample.java
+   90  clear
+   91  ls
+   92  pwd
+   93  ls
+   94  subl sample.java 
+   95  subl Dockerfile 
+   96  clear
+   97  docker images
+   98  ls
+   99  docker build -t japp .
+  100  subl sample.java 
+  101  clear
+  102  docker build -t japp .
+  103  docker images
+  104  clear
+  105  docker images
+  106  docker container ls
+  107  docker container ls -a
+  108  clear
+  109  docker run japp
+  110  docker container ls
+  111  docker container ls -a
+  112  clear
+  113  docker container ls -a
+  114  docker rm b0b9902c8cbe
+  115  docker rm 29cb6166e640
+  116  docker container ls -a
+  117  docker container ls
+  118  clear
+  119  docker images
+  120  docker rmi f4714633a6d6
+  121  docker rmi 4a6c9e299387
+  122  clear
+  123  docker images
+  124  clear
+  125  ls
+  126  subl sample.java 
+  127  clear
+  128  docker images
+  129  docker build -t japp:v1 .
+  130  docker images
+  131  docker run japp
+  132  cat Dockerfile 
+  133  cat sample.java 
+  134  clear
+  135  docker run japp:v1
+  136  whoami
+  137  docker container ls
+  138  docker container ls
+  139  docker container ls -a
+  140  clear
+  141  docker container ls
+  142  date
+  143  clear
+  144  docker container ls
+  145  cd /
+  146  clear
+  147  docker container ls
+  148  docker exec -ti 034c80294c0f bash
+  149  cat /etc/os-release 
+  150  clear
+  151  docker exec -ti 034c80294c0f bash
+  152  free -m
+  153  free -h
+  154  df -h 
+  155  df -h --total
+  156  docker exec -ti 034c80294c0f bash
+  157  ip a
+  158  clear
+  159  clear
+  160  docker container ls
+  161  docker stop 034c80294c0f
+  162  docker container ls
+  163  docker container ls -a
+  164  docker sart 034c80294c0f
+  165  clear
+  166  docker login
+  167  docker images
+  168  reboot
+  169  cd /
+  170  clear
+  171  cd /etc/yum.repos.d
+  172  subl kubernetes.repo
+  173  yum install -y kubectl
+  174  kubectl
+  175  clear
+  176  cd /
+  177  cd home/user1/Downloads/
+  178  ls
+  179  curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+  180  ls
+  181  sudo chmod +x minikube
+  182  ls
+  183  sudo mv minikube /usr/bin/
+  184  systemctl status firewalld
+  185  systemctl sop firewalld
+  186  systemctl stop firewalld
+  187  systemctl disable firewalld
+  188  clear
+  189  systemctl status firewalld
+  190  clear
+  191  yum install contrack -y
+  192  yum install conttrack -y
+  193  clear
+  194  cd /
+  195  clear
+  196  minikube start --vm-driver=none
+  197  yum install conntrack -y
+  198  clear
+  199  minikube start --vm-driver=none
+  200  clear
+  201  kubectl get nodes
+  202   minikube dashboard
+  203  kubectl get svc --all-snamespaces
+  204  kubectl get svc --all-namespaces
+  205  cd /etc/yum.repos.d
+  206  ls
+  207  subl kubernetes.repo 
+  208  clear
+  209  history
+  210  clear
+  211  cd /
+  212  clear
+  213  kubectl get deployments
+  214  kubectl get pods
+  215  clear
+  216  kubectl get deployments,pods
+  217  kubectl create deployment kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1
+  218  kubectl get deployments,pods
+  219  clear
+  220  clear
+  221  kubectl get deployment
+  222  kubectl describe deployment kubernetes-bootcamp
+  223  clear
+  224  kubectl get pods
+  225  kubectl describe pod kubernetes-bootcamp-6f6656d949-c7tdg
+  226  clear
+  227  kubectl get pods
+  228  kubectl delete pod ubernetes-bootcamp-6f6656d949-c7tdg 
+  229  kubectl delete pod kubernetes-bootcamp-6f6656d949-c7tdg 
+  230  kubectl get pods
+  231  clear
+  232  kubectl get pods
+  233  kubectl logs kubernetes-bootcamp-6f6656d949-ww59m 
+  234  kubectl exec -ti kubernetes-bootcamp-6f6656d949-ww59m bash 
+  235  clear
+  236  ls
+  237  cd /
+  238  clear
+  239  kubectl get pods
+  240  kubectl delete pods kubernetes-bootcamp-6f6656d949-ww59m
+  241  clear
+  242  kubectl scale deployments/kubernetes-bootcamp --replicas=25
+  243  kubectl scale deployments/kubernetes-bootcamp --replicas=5
+  244  kubectl scale deployments/kubernetes-bootcamp --replicas=30
+  245  ab
+  246  kubectl scale deployments/kubernetes-bootcamp --replicas=6
+  247  clear
+  248  kubectl get pods
+  249  kubectl scale deployments/kubernetes-bootcamp --replicas=100
+  250  clear
+  251  kubectl get deploy
+  252  kubectl describe deploy kubernetes-bootcamp
+  253  clear
+  254   kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v2
+  255  kubectl get pods
+  256  clear
+  257  kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v10
+  258  kubectl rollout status deployments/kubernetes-bootcamp
+  259  kubectl rollout undo deployments/kubernetes-bootcamp
+  260  kubectl rollout status deployments/kubernetes-bootcamp
+  261  kubectl rollout status deployments/kubernetes-bootcamp
+  262  kubectl rollout status deployments/kubernetes-bootcamp
+  263  clear
+  264  cd /home/user1/Downloads/
+  265  clear
+  266  ls
+  267  ls
+  268  unzip GuestbookAppWS.zip 
+  269  ls
+  270  mv GuestbookAppWS /kubews/
+  271  cd /kuy
+  272  cd /kubews/
+  273  ls
+  274  clear
+  275  ls
+  276  cd GuestbookAppWS/
+  277  cleAR
+  278  LS
+  279  clear
+  280  ls
+  281  kubectl get deploy
+  282  kubectl delete deploy kubernetes-bootcamp
+  283  clear
+  284  kubectl delete svc kubernetes-bootcamp
+  285  clear
+  286  ls
+  287  clear
+  288  ls
+  289  kubectl create -f redis-master-deployment.yaml
+  290  clear
+  291  kubectl create -f redis-master-service.yaml
+  292  kubectl create -f redis-slave-deployment.yaml
+  293  kubectl create -f redis-slave-service.yaml 
+  294  kubectl create -f frontend-deployment.yaml
+  295  kubectl create -f frontend-service.yaml 
+  296  clear
+  297  history
+  298  clear
+  299  cd /
+  300  clear
+  301  kubectl get deploy,po,svc
+  302  clear
+  303  kubectl get pods
+  304  kubectl exec -ti redis-master-6b54579d85-flt66 sh
+  305  clear
+  306  kubectl egt pods
+  307  clear
+  308  kubectl get pods
+  309  kubectl delete pods redis-master-6b54579d85-flt66
+  310  kubectl get pods
+  311  clear
+  312  clear
+  313  kubectl get deploy,po,svc
+  314  kubectl delete deployment -l app=redis
+  315  kubectl delete service -l app=redis
+  316  kubectl delete deployment -l app=guestbook
+  317  kubectl delete service -l app=guestbook
+  318  kubectl get deploy,po,svc
+  319  clear
+  320  ls
+  321  cd kubews/
+  322  clear
+  323  ls
+  324  cd /
+  325  cd /home/user1/Downloads/
+  326  ls
+  327  unzip WordPressWS.zip 
+  328  clear
+  329  ls
+  330  mv WordPressWS /kubews/
+  331  cd /kubews/
+  332  clear
+  333  ls
+  334  cd WO
+  335  cd WordPressWS/
+  336  clear
+  337  ls
+  338  clear
+  339  ls
+  340  subl mysql-deployment.yml 
+  341  clear
+  342  ls
+  343  clear
+  344  ls
+  345  kubectl create -f mysql-deployment.yml 
+  346  kubectl create secret generic mysql-pass --from-literal=password=root
+  347  kubectl apply -f mysql-deployment.yml 
+  348  kubectl apply -f mysql-deployment.yml 
+  349  clear
+  350  kubectl apply -f mysql-deployment.yml 
+  351  clear
+  352  ls
+  353  kubectl create -f wordpress-deployment.yml 
+  354  clear
+  355  kubectl get deploy,po,svc,pv,pvc
+  356  clear
+  357  kubectl get pods
+  358  kubectl exec -ti wordpress-mysql-57464b4779-zz7tb bash
+  359  clear
+  360  kubectl get pods
+  361  kubectl delete pods wordpress-mysql-57464b4779-zz7tb
+  362  kubectl get pods
+  363  clear
+  364  ls
+  365  kubectl get pods
+  366  kubectl get deploy
+  367  kubectl delete deploy wordpress
+  368  kubectl delete deploy wordpress-mysql
+  369  clear
+  370  kubectl svc
+  371  kubectl get svc
+  372  kubectl delete svc wordpress
+  373  kubectl delete svc wordpress-mysql
+  374  clear
+  375  cd ..
+  376  cd /
+  377  cd /home/user1/Downloads/
+  378  ls
+  379  rm - rf *
+  380  clear
+  381  ls
+  382  ls
+  383  unzip QuotapodWS.zip 
+  384  ls
+  385  rm -rf *
+  386  clear
+  387  ls
+  388  unzip QuotapodWS.zip 
+  389  ls
+  390  cd QuotapodWS/
+  391  ls
+  392  cd /
+  393  cd /home/user1/Downloads/
+  394  mv QuotapodWS /kubews/
+  395  cd /kubews/
+  396  ls
+  397  clear
+  398  ls
+  399  cd qu
+  400  cd QuotapodWS/
+  401  clear
+  402  ls
+  403  ls
+  404  ls
+  405  clear
+  406  ls
+  407  sub resourcequota.yaml 
+  408  subl resourcequota.yaml 
+  409  kubectl create namespace quota-pod-example
+  410  sudo kubectl create -f resourcequota.yaml --namespace=quota-pod-example
+  411  sudo kubectl describe resourcequota pod-demo --namespace=quota-pod-example
+  412  ls
+  413  subl deploymnt.yaml 
+  414  sudo kubectl create -f deployment.yaml --namespace=quota-pod-example
+  415  sudo kubectl create -f deployment.yaml --namespace=quota-pod-example
+  416  ls
+  417  sudo kubectl create -f deploymnt.yaml --namespace=quota-pod-example
+  418  sudo kubectl describe resourcequota pod-demo --namespace=quota-pod-example
+  419  kubectl get pods --namespace=quota-pod-example
+  420  clear
+  421  clear
+  422  kubectl get deployment pod-quota-demo --namespace=quota-pod-example --output=yaml
+  423  kubectl get deployment pod-quota-demo --namespace=quota-pod-example --output=yaml
+  424  clear
+  425  cd /home/user1/Downloads/
+  426  ls
+  427  ls
+  428  ls
+  429  unzip QuotamemcpuWS.zip 
+  430  ls
+  431  mv QuotamemcpuWS /kubews/
+  432  cd /
+  433  cd /kubews/
+  434  ls
+  435  clear
+  436  ls
+  437  cd QuotamemcpuWS
+  438  ls
+  439  clear
+  440  ls
+  441  sudo kubectl create namespace quota-mem-cpu-example
+  442  sudo kubectl create -f resourcequota.yaml --namespace=quota-mem-cpu-example
+  443  sudo kubectl describe resourcequota  mem-cpu-demo --namespace=quota-mem-cpu-example
+  444  sudo kubectl create -f pod1.yaml --namespace=quota-mem-cpu-example
+  445  sudo kubectl describe resourcequota  mem-cpu-demo --namespace=quota-mem-cpu-example
+  446  sudo kubectl create -f pod2.yaml --namespace=quota-mem-cpu-example
+  447  ls
+  448  subl pod1.yaml 
+  449  sudo kubectl create -f pod2.yaml --namespace=quota-mem-cpu-example
+  450  sudo kubectl describe resourcequota  mem-cpu-demo --namespace=quota-mem-cpu-example
+  451  clear
+  452  cd /
+  453  clear
+  454  ls
+  455  history > k8s_handson_actvty_histry.txt

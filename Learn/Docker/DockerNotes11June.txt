@@ -1,0 +1,105 @@
+Infrastructure Automation: IaC(Infrastructure as a code)
+==========================
+provision of environment
+physical/virtual/cloud 
+
+Tomcat(Web server) --> Dev, QA, Pre-prod, Prod --> 40 mins 
+
+Chef --> Dev, QA, Pre-prod, Prod(Client) --> 
+
+manual effort --> more
+cost-> increased
+risk -> increased
+
+Tomcat --> script  --> reusable 
+
+IA --> process of scripting environments 
+
+1. Evolving - Keeps on changing 
+   Chef -> Ruby - Pull
+   Puppet -> Ruby DSL - Pull
+   Saltstack -> Python - Push & Pull
+   Ansible -> Yaml - Push & Pull
+
+Pull Mechanism
+Push Mechanism
+ 
+Ansible:
+========
+Playbook --> set of instructions (Yaml) -> tomcat7 
+Dev, QA, Pre-prod, Prod --> ipaddress 
+
+inventory --> group the ipaddress of the nodes
+
+run playbook 
+
+2. Immutable - Not changable 
+   AMI
+   Docker 
+   Rocket
+   Rancher
+   LxC 
+
+Docker:
+======
+container 
+images
+
+virtualization:
+
+Hypervisor --> VMWare, Oracle Virtualbox...
+
+1. Docker Image - read-only template used to create containers.
+2. Docker Container - Execution environment/platform to run images.
+3. Docker Registry - store the images 
+   Public : DockerHub
+   Private : Docker Enterprise 
+
+
+Image -> Application, OS, Dependencies, utility, Software, Server, Database etc.,
+
+docker run --name "myfirstcontainer" tomcat--> container(tomcat)
+
+container - running instance of an image.
+
+Docker Swarm --> 
+
+
+Monolythic 
+
+MicroService 
+
+
+Commit --> saving the changes written to the container as a new image.
+Dockerfile --> set of instructions to create an image 
+
+
+
+
+FROM
+RUN
+ADD
+COPY
+WORKDIR
+EXPOSE 
+CMD
+ENTRYPOINT
+
+
+FROM ubuntu:14.04
+RUN apt-get update
+RUN apt-get install -y wget
+RUN apt-get install -y vim
+
+Build cache
+
+package --> artifact(jar/war/ear files)
+
+docker run ubuntu:14.04 ping localhost -c 40
+
+34.245.115.4
+
+ 
+
+
+

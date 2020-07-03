@@ -1,0 +1,43 @@
+
+----------------------------- Day 1
+1]  What is Kubernetes
+2]  K8s arctecture - master, cluster, on each node of cluster- container runtime (Docker), kubelet, kubeproxy
+3] Kubectl
+4] Deploy, explore, expose, scale and update
+5] Namespaces
+6] Deploy - kubectl run, get, describe, exec, logs, create | --dry-run=client, -o wide, -o yaml or json
+7] Multi container pod
+8] Restart policies   -  always, never, onfailure
+9] Replication controller  - Desired count of pods running on cluster, scaling, updates - rolbacks and rolfrwrds
+10] Types of replictn controlers - Replication controller , Replicaset, Deployment, Statefullset, Job, Cronjob
+----------------------------- Day 2
+1] Scaling -vertcle (scale up and down) vs horzntl scaling (sclae in scale in) - scale
+2] Expose - ClusterIP (within cluster), NodePort,Loadbalancer,Externalname (Outside cluster)
+3] kubectl expose, endpoints
+4] ALB vs NLB, K8s services big picture
+5] Update -  set command, rollout [history,status,restart,undo]
+6] Difrnt deploymnt strgs k8s supports - recreate,rollng (rampd up or incrmntl),  Blue/Green, Canary (dark relzs), A/B testing, Shaddowing
+
+7] Imprtv vs declrtv approac to create resources  - K8s documents, temlts using -o yaml, kubectl explain
+
+8] Statefull wl on K8s cluster, PV and PVC's-- deploying statefull app Wordpress on K8s clsuter where MySql is statefull
+
+
+
+--------
+
+
+CKAD -----------
+
+CKA ------------
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,379 @@
+TerraForm + CFT
+
+https://global.gotomeeting.com/join/919627117
+https://cloud.cdp.rpsconsulting.in/console/# 
+TerraForm
+*********************************************************
+- shape planets
+- codify the creation of entire datacenter through archivable, version-controlled code
+- Build, combine and launch your infrastructure from soup-to-nuts
+- It is infrastructure as code (IAC)
+- fifth tool in the HashiCorp stack
+
+How it differs from other configuration tools
+
+- Puppet, chef, boto, fog, cft, etc. are other tools.
+- TerraForm offers higher-level abstraction
+- Allows for the combination of multiple providers.
+- High level syntax for creating, provisioning
+- no need to learn and maintain tools
+- single solution that supports multiple services
+
+Terraform Installation
+
+Create AWS programatic access
+
+TerraForm Apply
+terraform.tfstate - TerraForm will write data into this file
+
+Practical Session
+vagrant.exe box list
+change the Vagrantfile
+https://github.com/amitvashist7/terraform-cf-acc.git
+----------------------------------------------------------
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# See README.md for details
+
+#VAGRANTFILE_API_VERSION = "2"
+Vagrant.configure(2) do |config|
+
+  config.vm.define "terraform"  do |ctl|
+    ctl.vm.synced_folder '.', '/vagrant', disabled: true
+    ctl.vm.box = "ubuntu/xenial64"
+        ctl.vm.hostname = "master"
+        ctl.vm.network "private_network", ip: "172.31.0.10"
+        ctl.vm.provider "virtualbox" do |vb|
+          vb.memory = 4048
+        end
+  end
+end
+---------------------------------------------------------
+vagrant.exe up
+vagrant.exe status ( to check machine is up or not )
+vagrant.exe ssh terraform (to ssh to the machine)
+
+apt-get update ; apt-get install jq unzip -y
+git clone https://github.com/amitvashist7/terraform-cf-acc.git
+cd teraaform-cd-acc/01-Setup-Terrafrom
+
+Terraform installation script
+-----------------------------------------------------------------------
+#!/bin/bash
+
+function terraform-install() {
+  [[ -f ${HOME}/bin/terraform ]] && echo "`${HOME}/bin/terraform version` already installed at ${HOME}/bin/terraform" && return 0
+  LATEST_URL=$(curl -sL https://releases.hashicorp.com/terraform/index.json | jq -r '.versions[].builds[].url' | sort --version-sort | egrep -v 'rc|beta|alpha' | egrep 'linux.*amd64' |tail -1)
+  curl ${LATEST_URL} > /tmp/terraform.zip
+  mkdir -p ${HOME}/bin
+  (cd ${HOME}/bin && unzip /tmp/terraform.zip)
+  if [[ -z $(grep 'export PATH=${HOME}/bin:${PATH}' ~/.bashrc) ]]; then
+  	echo 'export PATH=${HOME}/bin:${PATH}' >> ~/.bashrc
+  fi
+  
+  echo "Installed: `${HOME}/bin/terraform version`"
+  
+  cat - << EOF 
+ 
+Run the following to reload your PATH with terraform:
+  source ~/.bashrc
+EOF
+}
+
+terraform-install
+-------------------------------------------------------------------------
+
+./terraform.sh
+source ~/.bashrc
+terraform version
+
+AWS - Cred pass
+epsh2 - Account ID
+TerraForm-User06 - IAM User
+Password !QAZ2wsx
+https://epsh2.signin.aws.amazon.com/console
+AK - AKIA2RLIAWXT3FX4JJ5K
+SAK - o2uZc1uJ1T/60xUp0qQOMHl2aNeOJGjnBKOg73In
+ami-061392db613a6357b
+cd to terraform-cf-acc (git)
+
+first_deployment.tf (terrascript)
+
+-----------------------------------------
+provider "aws" {
+  access_key = "Access Key"
+  secret_key = "Secrey Key"
+  region     = "us-west-2"
+}
+resource "aws_instance" "example" {
+  ami           = "ami-2757f631"
+  instance_type = "t2.micro"
+}
+-----------------------------------------
+terraform init
+terraform apply
+terraform destroy
+
+terraform show (show the details from terraform.tfstate)
+
+Theory.......................................
+
+#comment (single line comment)
+/* and */ (multiple line comment)
+'key=value' ( assigning a variable)
+
+<<EOF and end with EOF (multiline strings can use shell-style)
+List and dictionary/map are same as python
+
+terraform apply (apply without plan)
+terraform plan (apply execution plan)
+terraform plan -out destroy-plan (create a plan)
+terraform refresh (refresh and show)
+terraform show (display known state)
+terraform validate (validate)
+terraform apply plan (execute plan)
+
+
+git pull
+cd 03-Basic-commands-execution
+
+terraform init -upgrade 03-Basic-commands-execution/ (same as terraform init) 
+terraform plan (only plan)
+terraform plan -out build-plan (to have plan available)
+terraform plan --destroy -out destroy-plan (to have destroy plan)
+terraform apply <plan file>
+
+
+Resources
+
+
+Meta-parameters
+- count
+- depends_on
+
+Lifecycle
+- create_before_destroy = true
+- prevent_destroy = true
+
+-----------------------------------------------------------------
+provider "aws" {
+  access_key = "Access Key"
+  secret_key = "Secrey Key"
+  region     = "us-west-2"
+}
+resource "aws_instance" "frontend" {
+  depends_on    = ["aws_instance.backend"]
+  ami           = "ami-2757f631"
+  instance_type = "t2.micro"
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_instance" "backend" {
+  count         = 2
+  ami           = "ami-2757f631"
+  instance_type = "t2.micro"
+  timeouts {
+    create = "60m"
+	delete = "2h"
+  }
+}
+
+---------------------------------------------------------
+Providers
+
+--------------------------------------------------------
+provider "aws" {
+  access_key = "Access Key"
+  secret_key = "Secrey Key"
+  region     = "us-west-2"
+}
+
+provider "aws" {
+  access_key = "Access Key"
+  secret_key = "Secrey Key"
+  alias      = "us-west-1"
+  region     = "us-west-1"
+}
+
+resource "aws_instance" "frontend" {
+  provider      = "aws.us-west-1"
+  ami           = "ami-2757f631"
+  instance_type = "t2.micro"
+}
+
+resource "aws_instance" "frontend" {
+  ami           = "ami-2757f631"
+  instance_type = "t2.micro"
+}
+
+-----------------------------------------------------------------------
+VARIABLES
+
+Example
+variable "key" {
+  type    = "map"
+  default = {
+    "us-east-1" = "image-1234"
+  }
+}
+
+DEMO
+
+(variables.tf)
+
+-----------------------------------------------
+provider "aws" {
+  access_key = "ACCESS_KEY"
+  secret_key = "SECRET_KEY"
+  region     = "us-west-2"
+}
+
+variable "zones" {
+  default = ["us-west-2a","us-east-2b"]
+}
+
+resource "aws_instance" "example" {
+  count               = 2
+  availability_zone   = "${var.zone[count.index]}"
+  ami                 = "ami-010101"
+  instance_type       = "t2.micr"
+}
+
+--------------------------------------------------
+
+calling with external variable file
+
+terraform plan -var-file=var-file-example.tfvars
+
+calling with external env variable
+
+export TF_VAR_zones='["us-east-1d","us-east-1c"]'
+terraform plan
+
+
+OUTPUT ATTRIBUTES
+
+terraform output command (similar to echo)
+
+provider "aws" {
+  access_key = "ACCESS_KEY"
+  secret_key = "SECRET_KEY"
+  region     = "us-west-2"
+}
+
+resource "aws_instance" "frontend" {
+  ami           = "ami-2757f631"
+  instance_type = "t2.micro"
+}
+
+resource "aws_instance" "backend" {
+  ami           = "ami-2757f631"
+  instance_type = "t2.micro"
+}
+
+output "frontend_ip" {
+  value = "${aws_instance.frontend.public_ip}"
+}
+
+output "backend_ips" {
+  value = "${list ("${aws_instance.backend.*.public_ip}" ,"${aws_instance.backend.*.public_dns}")}"
+}
+
+-----------------------------------------------------------------------------
+
+Full Exercise which shows how lifecycle stops to destroy instances
+
+provider "aws" {
+  access_key = "ACCESS_KEY"
+  secret_key = "SECRET_KEY"
+  region     = "us-east-1"
+}
+
+provider "aws" {
+  alias      = "us-west-1"
+  access_key = "ACCESS_KEY"
+  secret_key = "SECRET_KEY"
+  region     = "us-west-1"
+}
+
+variable "us-east-zones" {
+  default = ["us-east-1a", "us-east-1b"]
+}
+
+variable "us-west-zones" {
+  default = ["us-west-1a", "us-west-1c"]
+}
+
+resource "aws_instance" "west_frontend" {
+  count             = 2
+  depends_on        = ["aws_instance.west_backend"]
+  provider          = "aws.us-west-1"
+  ami               = "ami-0019ef04ac50be30f"
+  availability_zone = "${var.us-west-zones[count.index]}"
+  instance_type     = "t2.micro"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_instance" "frontend" {
+  count             = 2
+  depends_on        = ["aws_instance.backend"]
+  availability_zone = "${var.us-east-zones[count.index]}"
+  ami               = "ami-0de53d8956e8dcf80"
+  instance_type     = "t2.micro"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_instance" "backend" {
+  count             = 2
+  availability_zone = "${var.us-east-zones[count.index]}"
+  ami               = "ami-0de53d8956e8dcf80"
+  instance_type     = "t2.micro"
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+resource "aws_instance" "west_backend" {
+  provider          = "aws.us-west-1"
+  ami               = "ami-0019ef04ac50be30f"
+  count             = 2
+  availability_zone = "${var.us-west-zones[count.index]}"
+  instance_type     = "t2.micro"
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+output "frontend_ip" {
+  value = "${aws_instance.frontend.*.public_ip}"
+}
+
+output "backend_ips" {
+  value = "${aws_instance.backend.*.public_ip}"
+}
+
+----------------------------------------------------------------------
+
+terraform console (to go to terraform console)
+
+
+MODULES
+
+modules are self-contained packages of configuration used to create reusable Terraform elements
+
+
+WORKSPACE
+
+terraform workspace new demo (create new workspace)
+terraform workspace list (to list available workspace)
+terraform workspace select demo (to switch to particular workspace)

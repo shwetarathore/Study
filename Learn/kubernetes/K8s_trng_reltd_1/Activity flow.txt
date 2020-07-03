@@ -1,0 +1,14 @@
+[|-Updating App-|]
+1] kubectl get deployments
+2] kubectl describe deployments/kubernetes-bootcamp (Check image version)
+3] docker images (Check TAG, IMAGE ID, CREATED, SIZE)
+3] kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v2
+4] docker images (Check TAG, IMAGE ID, CREATED, SIZE)
+5] kubectl get pods
+6] kubectl describe deployments/kubernetes-bootcamp (Check for version change)
+7] curl http://<IP>:port (Service's IP)
+8] curl http://<IP>:Targetport (Pod's IP) (No load balancer here)
+9] curl http://<IP>:NodePort (Nodes's IP)
+10] kubectl rollout status deployments/kubernetes-bootcamp
+11] kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v10 (V10 is unstable version)
+12] kubectl rollout undo deployments/kubernetes-bootcamp (roolback unstable V10)
